@@ -1,23 +1,24 @@
-# six-byte-name
+# six-nibble-name
 
-A minimal, light-weight Python module for converting six bytes into a 4-character name.
+A minimal, light-weight Python module for converting six nibbles (three bytes) into a
+4-character name.
 
 ## How To
 
-The `sixbytename` module contains a single function: `get`. This takes a single argument,
-ideally a 6 byte integer, and converts it to a 4 character string designed to be memorable.
+The `sixnibblename` module contains a single function: `get`. This takes a single argument,
+ideally a 6 nibble integer, and converts it to a 4 character string designed to be memorable.
 
-If the integer being converted has more than 6 bytes, only the lowest 6 bytes will be used.
+If the integer being converted has more than 6 nibbles, only the lowest 6 will be used.
 
 Here is a full example, showing outputs of pre-set integers being converted:
 
 ```python
->>> import sixbytename
->>> sixbytename.get(0x123456)
+>>> import sixnibblename
+>>> sixnibblename.get(0x123456)
 'Mori'
->>> sixbytename.get(0x32123456)
+>>> sixnibblename.get(0x32123456)
 'Mori'
->>> name = sixbytename.get(0x234567)
+>>> name = sixnibblename.get(0x234567)
 >>> print('Hello, my name is %s' % name)
 Hello, my name is Waci
 ```
