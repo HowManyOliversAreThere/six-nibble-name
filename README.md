@@ -29,13 +29,21 @@ The idea behind the design of this module is to convert somewhat unique, ugly na
 those retrieved through the [ESP8266 Micropython unique_id() call](http://docs.micropython.org/en/v1.9.3/esp8266/library/machine.html#machine.unique_id))
 into something not only readable, but memorable. Please note that the `unique_id()`
 call mentioned above returns a byte string, not an int, so this will not work directly,
-you'll need to convert that to an int first! An untested attempt at doing so:
-`int(machine.unique_id(), 16)`
+you'll need to convert that the output of `unique_id()` to an int first!
+
+One way to get this done as at MicroPython V1.9.3 (ESP8266 build):
+
+```python
+>>> import machine
+>>> import sixnibblename
+>>> sixnibblename.get(int.from_bytes(machine.unique_id(), 'little'))
+'Dura'
+```
 
 I appreciate that in the process of making something readable, I have also
 made the identifier even less unique than it was originally, however the use case for this
 sort of naming system is small, local networks (think less than 10 devices), in which case
-the odds of one device having the same name as another is less than 0.1%. If you think this
+the odds of one device having the same name as another is less than 0.2%. If you think this
 is possibly going to be an issue for you, please do not use this module!
 
 I also recognise that the values are slightly weighted towards some values than others
