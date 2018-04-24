@@ -5,10 +5,14 @@ A minimal, light-weight Python module for converting six nibbles (three bytes) i
 
 ## How To
 
-The `sixnibblename` module contains a single function: `get`. This takes a single argument,
-ideally a 6 nibble integer, and converts it to a 4 character string designed to be memorable.
-
-If the integer being converted has more than 6 nibbles, only the lowest 6 will be used.
+The `sixnibblename` module contains a single function: `get()`. This takes either zero
+or one arguments, depending on your use case.
+* If you just want to convert six nibbles into a name on Python (micro or regular),
+  pass in the number (ideally a 6 nibble integer) as an argument to the `get()` function
+  and it will be converted to a 4 byte name
+  * If the integer being converted has more than 6 nibbles, only the lowest 6 will be used
+* On Micropython, simply call the `get()` function argumentless to get the name of
+  the device based on the unique id of the device
 
 Here is a full example, showing outputs of pre-set integers being converted:
 
@@ -18,27 +22,18 @@ Here is a full example, showing outputs of pre-set integers being converted:
 'Mori'
 >>> sixnibblename.get(0x32123456)
 'Mori'
->>> name = sixnibblename.get(0x234567)
+>>> sixnibblename.get()
+'Dura'
+>>> name = sixnibblename.get()
 >>> print('Hello, my name is %s' % name)
-Hello, my name is Waci
+Hello, my name is Dura
 ```
 
 ## But...why?
 
 The idea behind the design of this module is to convert somewhat unique, ugly names (such as
 those retrieved through the [ESP8266 Micropython unique_id() call](http://docs.micropython.org/en/v1.9.3/esp8266/library/machine.html#machine.unique_id))
-into something not only readable, but memorable. Please note that the `unique_id()`
-call mentioned above returns a byte string, not an int, so this will not work directly,
-you'll need to convert that the output of `unique_id()` to an int first!
-
-One way to get this done as at MicroPython V1.9.3 (ESP8266 build):
-
-```python
->>> import machine
->>> import sixnibblename
->>> sixnibblename.get(int.from_bytes(machine.unique_id(), 'little'))
-'Dura'
-```
+into something not only readable, but memorable.
 
 I appreciate that in the process of making something readable, I have also
 made the identifier even less unique than it was originally, however the use case for this
@@ -50,6 +45,8 @@ I also recognise that the values are slightly weighted towards some values than 
 (more substantial on the vowels than consonants). If someone wants to help improve the
 algorithm for a more even distribution, please throw me PR!
 
-On the other hand, if you really wish your devices had a bit more of a personality,
-and aren't overly concerned about the uniqueness or clashes, this may be the perfect module
-for you.
+
+## Closing Statements
+
+If you really wish your devices had a bit more of a personality, and aren't overly concerned
+about the uniqueness or clashes, this may be the perfect module for you.
