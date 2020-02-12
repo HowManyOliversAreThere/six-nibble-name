@@ -1,6 +1,6 @@
 # six-nibble-name
 
-A minimal, light-weight Python module for converting six nibbles (three bytes) into a
+A minimal, light-weight (Micro)Python module for converting six nibbles (three bytes) into a
 4-character name.
 
 ## How To
