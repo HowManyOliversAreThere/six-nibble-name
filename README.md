@@ -1,7 +1,7 @@
 # six-nibble-name
 
 A minimal, light-weight (Micro)Python module for converting six nibbles (three bytes) into a
-4-character name.
+four character name. Example: `0x123456` into `Mori`.
 
 ## How To
 
