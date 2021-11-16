@@ -50,3 +50,8 @@ algorithm for a more even distribution, please throw me PR!
 
 If you really wish your devices had a bit more of a personality, and aren't overly concerned
 about the uniqueness or clashes, this may be the perfect module for you.
+
+
+## Credits
+
+- Social preview image copyright Chris Eason (CC BY 2.0), https://www.flickr.com/photos/45189308@N00/2362237368. Image was cropped to fit required dimensions.
